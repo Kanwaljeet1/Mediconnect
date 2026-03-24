@@ -1,7 +1,7 @@
 services:
   # Backend
   - type: web
-    name: telemedicine-backend
+    name: telemedicine-app-latest
     env: node
     plan: free
     rootDir: backend
@@ -35,13 +35,13 @@ services:
       - key: VITE_API_URL
         fromService:
           type: web
-          name: telemedicine-backend
+          name: telemedicine-app-latest
           property: host
         transformation: "https://${value}/api"
       - key: VITE_BACKEND_URL
         fromService:
           type: web
-          name: telemedicine-backend
+          name: telemedicine-app-latest
           property: host
         transformation: "https://${value}"
 
