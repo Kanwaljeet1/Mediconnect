@@ -15,41 +15,6 @@ const io = new Server(httpServer, {
   }
 });
 
-//mongodb driver
-
-import {MongoClient } from 'mongodb';
-// or as an es module:
-
-// Connection URL
-const url = "mongodb+srv://kanwalkaur1310_db_user:labrapassword@cluster0.tuqoyzo.mongodb.net/";
-const client = new MongoClient(url);
-
-// Database Name
-const dbName = 'Telemedicine-app';
-
-async function main() {
-  // Use connect method to connect to the server
-  await client.connect();
-  console.log('Connected successfully to server');
-  const db = client.db(dbName);
-  const collection = db.collection('Users');
-
-  // the following code examples can be pasted here...
-
-  return 'done.';
-}
-
-main()
-  .then(console.log)
-  .catch(console.error)
-  .finally(() => client.close());
-
-
-
-  
-
-
-
 // Socket.io Signaling Logic
 io.on("connection", (socket) => {
   console.log("User connected:", socket.id);
@@ -97,4 +62,3 @@ app.get("/", (req, res) => {
 httpServer.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
